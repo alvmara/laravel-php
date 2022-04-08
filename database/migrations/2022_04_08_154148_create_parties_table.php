@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePartiesTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,9 +14,21 @@ class CreatePartiesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('parties', function (Blueprint $table) {
+
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->boolean('owner');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+
+            //Foreign Keys
+            $table->unsignedBigInteger('gameId');
+            $table->foreign('gameId', 'fk_parties_games')
+                ->on('games')
+                ->references('id')
+                ->onDelete('cascade');
         });
     }
 
@@ -26,6 +39,7 @@ class CreatePartiesTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('parties');
     }
 }
