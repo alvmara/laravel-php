@@ -3,36 +3,70 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+
 class User extends Authenticatable
 {
+    use HasFactory, Notifiable, HasApiTokens;
 
-    protected $fillable = ['userName', 'email', 'password', 'steamUserName'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+        'role',
+        'steamUsername',
+        'originUsername',
+        'epicgamesUsername',
+        'battlenetUsername',
+        'riotUsername'
+    ];
 
-    protected $hidden = ['password'];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-    use HasApiTokens, HasFactory, Notifiable;
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
-    public function friends()
+    //RELACIONES CON OTRAS TABLAS
+    public function friendships()
     {
+        return $this->hasMany(Friendship::class);
+    }
 
-        return $this->hasMany('App\Models\Friend');
+    public function parties()
+    {
+        return $this->hasMany(Party::class);
     }
 
     public function messages()
     {
-
-        return $this->hasMany('App\Models\Message');
+        return $this->hasMany(Message::class);
     }
 
-    public function belongs()
+    public function members()
     {
-
-        return $this->hasMany('App\Models\Belong');
+        return $this->hasMany(Member::class);
     }
 }

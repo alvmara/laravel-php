@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMessagesTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,9 +14,26 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('messages', function (Blueprint $table) {
+
             $table->id();
-            $table->timestamps();
+            $table->string('message');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+
+            //Foreign Keys
+            $table->unsignedBigInteger('from');
+            $table->foreign('from', 'fk_messages_users')
+                ->on('users')
+                ->references('id')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('partyId');
+            $table->foreign('partyId', 'fk_messages_parties')
+                ->on('parties')
+                ->references('id')
+                ->onDelete('cascade');
         });
     }
 
@@ -26,6 +44,7 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('messages');
     }
 }

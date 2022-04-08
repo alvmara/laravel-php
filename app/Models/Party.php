@@ -7,26 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Party extends Model
 {
-
     use HasFactory;
 
-    protected $fillable = ['name', 'owner', 'gameId'];
+    public $fillable = [
+        'name',
+        'OwnerID',
+        'GameID'
+    ];
 
-    public function belongs()
+    public function games()
     {
+        return $this->belongsTo(Game::class);
+    }
 
-        return $this->hasMany('App\Models\Belong');
+    public function players()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function messages()
     {
-
-        return $this->hasMany('App\Models\Message');
-    }
-
-    public function games()
-    {
-
-        return $this->belongsTo('App\Models\Game', 'gameId', 'id');
+        return $this->hasMany(Message::class);
     }
 }
