@@ -11,7 +11,8 @@ use App\Models\User;
 class GamesController extends Controller
 {
 
-    ////////// TRAER TODOS LOS GAMES //////////
+
+    //traer todos los juegos
 
     public function allGames()
     {
@@ -32,8 +33,7 @@ class GamesController extends Controller
         }
     }
 
-
-    ////////// CREAR UN GAME //////////
+    //crear un juego
 
     public function newGame(Request $request)
     {
@@ -68,7 +68,8 @@ class GamesController extends Controller
         }
     }
 
-    ////////// TRAER UN GAME POR ID //////////
+
+    //traer juego por id
 
     public function gameByID($id)
     {
@@ -93,7 +94,7 @@ class GamesController extends Controller
         }
     }
 
-    ////////// ACTUALIZAR UN GAME //////////
+    //actualizar un juego
 
     public function updateGame($id, Request $request)
     {
@@ -128,7 +129,9 @@ class GamesController extends Controller
         }
     }
 
-    ////////// ELIMINAR UN GAME //////////
+
+
+    //eliminar un juego
 
     public function deleteGame($id)
     {

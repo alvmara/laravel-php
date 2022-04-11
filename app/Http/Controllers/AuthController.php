@@ -12,7 +12,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
 
-    ///////////////// REGISTRO ///////////////////////
+
+    //register
 
     public function register(Request $request)
     {
@@ -41,7 +42,8 @@ class AuthController extends Controller
     }
 
 
-    ///////////////// LOGIN ///////////////////////
+    //login
+
 
     public function login(Request $request)
     {
@@ -62,15 +64,14 @@ class AuthController extends Controller
     }
 
 
-    ///////////////// PERFIL ///////////////////////
+    // profile
 
-    public function me()
+    public function profile()
     {
         return response()->json(auth()->user());;
     }
 
-
-    ///////////////// LOGOUT ///////////////////////
+    //logout
 
     public function logout(Request $request)
     {
