@@ -23,11 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'steamUsername',
-        'originUsername',
-        'epicgamesUsername',
-        'battlenetUsername',
-        'riotUsername'
+        'steamUsername'
     ];
 
     /**
