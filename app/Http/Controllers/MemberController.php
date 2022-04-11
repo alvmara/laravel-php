@@ -10,7 +10,8 @@ use App\Models\User;
 
 class MemberController extends Controller
 {
-    ////////// TRAER TODOS LOS MEMBER //////////
+    //traer todos los jugadores
+
     public function allMembers()
     {
         Log::info('allMembers()');
@@ -30,7 +31,7 @@ class MemberController extends Controller
         }
     }
 
-    ////////// CREAR UN MEMBER //////////
+    //crear un jugador
     public function newMember(Request $request)
     {
         Log::info('newMember()');
@@ -61,8 +62,7 @@ class MemberController extends Controller
             return response()->json(['message' => 'Something went wrong'], 500);
         }
     }
-
-    ////////// TRAER UN MEMBER POR ID //////////
+    //traer por id 
     public function memberByID($id)
     {
         Log::info('getMember()');
@@ -82,7 +82,7 @@ class MemberController extends Controller
         }
     }
 
-    ////////// ACTUALIZAR UN MEMBER //////////
+    // actualizar jugador
     public function updateMember(Request $request, $id)
     {
         Log::info('updateMember()');
@@ -116,7 +116,7 @@ class MemberController extends Controller
         }
     }
 
-    ////////// ELIMINAR UN MEMBER //////////
+    //eliminar jugador
     public function deleteMember($id)
     {
         Log::info('deleteMember()');
@@ -142,7 +142,8 @@ class MemberController extends Controller
         }
     }
 
-    ////////// TRAER TODOS LOS MEMBER DE UN PARTY //////////
+
+    // traer todos los jugadores de partida
     public function membersByParty($id)
     {
         Log::info('membersByParty()');
