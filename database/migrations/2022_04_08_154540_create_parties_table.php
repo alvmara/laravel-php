@@ -15,7 +15,7 @@ class CreatePartiesTable extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name');
             $table->unsignedInteger('GameID');
             $table->foreign('GameID')
                 ->references('id')

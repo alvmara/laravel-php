@@ -9,6 +9,7 @@ class Party extends Model
 {
     use HasFactory;
 
+
     public $fillable = [
         'name',
         'OwnerID',
