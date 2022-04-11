@@ -39,6 +39,7 @@ Route::group([
     Route::get('/users/{id}', [UserController::class, 'userByID']);
     Route::put('/users/{id}', [UserController::class, 'updateUser']);
     Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
+    Route::get('/users/steam', [UserController::class, 'userBySteamUsername']);
 });
 
 // crud de juego
