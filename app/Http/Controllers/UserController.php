@@ -109,4 +109,25 @@ class UserController extends Controller
             return response()->json(['message' => 'Something went wrong'], 500);
         }
     }
+
+    //buscar usuario por steamUsername
+
+    public function userBySteamUsername($steamUsername)
+    {
+        Log::info('userBySteamUsername()');
+
+        try {
+
+            $user = User::where('steamUsername', $steamUsername)->first();
+
+            Log::info('Tasks done');
+
+            return response()->json($user, 200);
+        } catch (\Exception $e) {
+
+            Log::error($e->getMessage());
+
+            return response()->json(['message' => 'Something went wrong'], 500);
+        }
+    }
 }
