@@ -2,6 +2,7 @@
 
 El deploy del backend se ha realizado en heroku: https://laravel-l.herokuapp.com
 
+Login:
 
 Route::post('/register', [AuthController::class, "userRegister"]);
 
@@ -10,6 +11,8 @@ Route::post('/login', [AuthController::class, "userLogin"]);
 Route::post('/logout', [AuthController::class, "userLogout"]);
 
 
+
+Usuarios :
 
 Route::get('/profile', [AuthController::class, 'profile']);
 
@@ -24,7 +27,7 @@ Route::put('/users/{id}', [UserController::class, 'updateUser']);
 Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 
 
-
+Juegos:
 
 Route::get('/games', [GameController::class, "gamesAll"]);
 
@@ -36,6 +39,9 @@ Route::put('/games/{id}', [GameController::class, "updateGame"]);
 
 Route::delete('/games/{id}', [GameController::class, "deleteGame"]);
 
+
+
+Grupos:
 
 Route::get('/parties', [PartyController::class, "partiesAll"]);
 
@@ -50,6 +56,10 @@ Route::put('/parties/{id}', [PartyController::class, "deleteParty"]);
 Route::delete('/parties/game/{id}', [PartyController::class, "partiesByGameID"]);
 
 
+
+
+Mensajes:
+
 Route::get('/messages', [MessageController::class, 'allMessages']);
 
 Route::post('/messages', [MessageController::class, 'newMessage']);
@@ -63,6 +73,11 @@ Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
 Route::post('/message/party/{id}', [MessageController::class, "messagesByPartyID"]);
 
 
+
+
+Miembros:
+
+
 Route::get('/members', [MemberController::class, 'allMembers']);
 
 Route::post('/members', [MemberController::class, 'newMember']);
@@ -74,3 +89,4 @@ Route::put('/members/{id}', [MemberController::class, 'updateMember']);
 Route::delete('/members/{id}', [MemberController::class, 'deleteMember']);
 
 Route::post('/member/party/{id}', [MemberController::class, "membersByPartyID"]);
+
